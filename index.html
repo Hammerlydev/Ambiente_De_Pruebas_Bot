@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba de bot 1.0</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Solicitud de reemplazo</h1>
+        <form>
+            <label for="opciones">Selecciona un departamento:</label>
+            <select name="opciones" id="opciones">
+                <option value="01">01 - ATLANTICO</option>
+                <option value="02">02 - CESAR</option>
+                <option value="03">03 - CUNDINAMARCA</option>
+                <option value="04">04 - BOYACA</option>
+                <option value="05">05 - TOLIMA</option>
+            </select>
+
+            <label for="archivoA">Acta a reemplazar:</label>
+            <input type="file" id="archivoA" name="archivoA">
+            
+            <label for="archivoN">Acta nueva:</label>
+            <input type="file" id="archivoN" name="archivoN">
+            
+            <label for="numeros">numero de actas reemplazadas:</label>
+            <input type="text" id="numeros" name="numeros">
+
+            <button type="button" id="enviar">Enviar Solicitud</button>
+
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('enviar').addEventListener('click', function(){
+            const opciones = document.getElementById('opciones').value;
+            const archivo = document.getElementById('archivo').value;
+            const numeros = document.getElementById('numeros').value;
+
+            const mensaje = `Solicitud de Reemplazo\n\nOpción seleccionada: ${opciones}\nArchivo adjunto: ${archivo}\nNúmeros ingresados: ${numeros}`;
+
+            const whatsappURL = `https://api.whatsapp.com/send?text=${encodeURIComponent(mensaje)}`;
+
+            window.open(whatsappURL);
+        })
+    </script>
+</body>
+</html>
